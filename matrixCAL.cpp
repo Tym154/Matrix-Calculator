@@ -20,7 +20,9 @@ int main() {
     
 
     fill(row1, colum1, matrix1);
-    writeOut(row1, colum1, matrix1);
+    fill(row2, colum2, matrix2);
+    addition(row1, colum1, row2, colum2, matrix1, matrix2);
+    writeOut(row1, colum1, ResultMatrix);
 }
 
 void writeOut(int row, int colum, vector<vector<double>>& matrix) {
@@ -39,4 +41,19 @@ void fill(int row, int colum, vector<vector<double>>& matrix) {
         }
     }
 }
+
+void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2){
+    if(row1 == row2 && colum1 == colum2){ //checking if the matrixes are the same size
+        ResultMatrix.resize(row1, vector<double>(colum1));
+        for(int i = 0; i < row1; i++) {
+            for(int j = 0; j < colum1; j++) {
+                ResultMatrix[i][j] = matrix1[i][j] + matrix2[i][j]; //filling out the result matrix
+            }
+        }
+    }
+    else{
+        cout << "\nError\n"; //error if the matrixes sizes do not match
+        return; 
+    }
+} 
 
