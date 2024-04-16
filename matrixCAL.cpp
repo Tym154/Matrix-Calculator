@@ -23,7 +23,7 @@ int main() {
     writeOut(row1, colum1, matrix1);
 }
 
-void writeOut(int colum, int row, vector<vector<double>>& matrix) {
+void writeOut(int row, int colum, vector<vector<double>>& matrix) {
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < colum; j++) {  //iterating through the array and writing out every single element 
             cout << matrix[i][j] << " ";
@@ -32,7 +32,7 @@ void writeOut(int colum, int row, vector<vector<double>>& matrix) {
     }
 }
 
-void fill(int colum, int row, vector<vector<double>>& matrix) {
+void fill(int row, int colum, vector<vector<double>>& matrix) {
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < colum; j++) {  //iterating through the array and filling the matrix
             cin >> matrix[i][j];
