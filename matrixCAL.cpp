@@ -103,7 +103,7 @@ void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<do
         }
     }
     else{
-        cout << "\nError\n"; //error if the matrixes sizes do not match
+        cout << "\nError\n"; //error if you cant multiply at all
         return;
     }
 }
