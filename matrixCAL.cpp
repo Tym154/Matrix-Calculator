@@ -8,9 +8,9 @@ vector<vector<double>> matrix1;
 
 void writeOut(int row, int colum, vector<vector<double>>& matrix); //Function to write out the contents of a matrix
 void fill(int row, int colum, vector<vector<double>>& matrix); //Function to fill the matrix with data
-void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
-void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
-void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
+void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to add the matrixes
+void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to subtract the matrixes
+void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to multiply the matrixes
 
 int main() {
     int row1, colum1, row2, colum2;
@@ -24,7 +24,7 @@ int main() {
 
     fill(row1, colum1, matrix1);
     fill(row2, colum2, matrix2);
-    multiplication(row1, colum1, row2, colum2, matrix1, matrix2);
+    multiplication(row1, colum1, row2, colum2, matrix1, matrix2);  //just trzing the things out
     writeOut(row2, colum1, Bmatrix);
 }
 
@@ -78,19 +78,19 @@ void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<doubl
 }
 
 void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2){
-    if(colum1 == row2){
-        Amatrix.resize(row1, vector<double>(colum2));
+    if(colum1 == row2){ //checking if the number of colums in the first matrix are same as the number of the rows in secend matrix
+        Amatrix.resize(row1, vector<double>(colum2)); //creating Amatrix with the oposite colums/rows from both of the matrixes
         for(int i = 0; i < row1; i++){
-            for(int j = 0; j < colum2; j++){
-                double temp = 0;
-                for(int k = 0; k < colum1; k++){
-                    temp += matrix1[i][k] * matrix2[k][j];
+            for(int j = 0; j < colum2; j++){ //iterate throught the created Amatrix
+                double temp = 0; //reseting the temporary variable
+                for(int k = 0; k < colum1; k++){ //iterating through the rows from matrix1 and colums from matrix2
+                    temp += matrix1[i][k] * matrix2[k][j]; //multiplying the row from matrix1, colum from matrix2 and adding them to the temporary variable
                 }
-                Amatrix[i][j] = temp;
+                Amatrix[i][j] = temp; //after all elements from the row and colum from the matrixes are multiplyed and added to the temporary variable. we assign the value to the coresponding Amatrix field
             }
         }
     }
-    if(colum2 == row1){
+    if(colum2 == row1){ //the same thing but reversed and with Bmatrix
         Bmatrix.resize(row2, vector<double>(colum1));
         for(int i = 0; i < row2; i++){
             for(int j = 0; j < colum1; j++){
