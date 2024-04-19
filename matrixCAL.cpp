@@ -14,19 +14,53 @@ void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<do
 void powoftwo(int row, int colum, vector<vector<double>>& matrix);
 
 int main() {
-    int row1, colum1, row2, colum2;
 
+    //isnt working now, im gonna do it later
+}
+
+void choose(){
+cout << "What operation would you like to do? (write down the number) \n1.addition \n2.subtraction \n3.addition \n4.multiplication \n5.multiplication with number \n6.power \n";
+cin >> operation;
+switch (operation)
+{
+    case 0:
+        cout << "Error, Restart! \n"; 
+        break;
+
+    case 1:
+        
+        break;
+
+    case 2:
+
+        break;
+
+    case 3:
+
+        break;
+
+    case 4:
+
+        break;
+
+    case 5:
+
+        break;
+
+    case 6:
+
+        break;
+    }
+}
+
+void start(){
+    cout << "Enter size of the first matrix (row, colum): \n";
     cin >> row1 >> colum1;
     matrix1.resize(row1, vector<double>(colum1)); //resizing the matrixes
 
+    cout << "Enter size of the second matrix (row, colum): \n";
     cin >> row2 >> colum2;
     matrix2.resize(row2, vector<double>(colum2));
-    
-
-    fill(row1, colum1, matrix1);
-    fill(row2, colum2, matrix2);
-    multiplication(row1, colum1, row2, colum2, matrix1, matrix2);  //just trzing the things out
-    writeOut(row2, colum1, Bmatrix);
 }
 
 void writeOut(int row, int colum, vector<vector<double>>& matrix) {
