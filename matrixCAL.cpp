@@ -6,6 +6,8 @@ using namespace std;
 vector<vector<double>> matrix2;
 vector<vector<double>> matrix1;
 
+void start();
+void choose();
 void writeOut(int row, int colum, vector<vector<double>>& matrix); //Function to write out the contents of a matrix
 void fill(int row, int colum, vector<vector<double>>& matrix); //Function to fill the matrix with data
 void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to add the matrixes
