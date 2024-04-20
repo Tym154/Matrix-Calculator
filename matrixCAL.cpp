@@ -13,7 +13,7 @@ void fill(int row, int colum, vector<vector<double>>& matrix); //Function to fil
 void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to add the matrixes
 void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to subtract the matrixes
 void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to multiply the matrixes
-void powoftwo(int row, int colum, vector<vector<double>>& matrix);
+void powoftwo(int row, int colum, vector<vector<double>>& matrix); //function to get power of 2 of a matrix
 
 int main() {
 
