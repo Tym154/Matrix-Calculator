@@ -17,7 +17,7 @@ void powoftwo(int row, int colum, vector<vector<double>>& matrix); //function to
 
 int main() {
 
-    //isnt working now, im gonna do it later
+    //isnt working now, im gonna do it later, ahhhhhhhhhhh
 }
 
 void choose(){
