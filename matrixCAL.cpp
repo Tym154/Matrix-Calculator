@@ -3,54 +3,78 @@
 
 using namespace std;
 
+int row1, colum1, row2, colum2, operation = 0, which;
+
 vector<vector<double>> matrix2;
 vector<vector<double>> matrix1;
+vector<vector<double>> ResultMatrix;
+vector<vector<double>> Amatrix;
+vector<vector<double>> Bmatrix;
 
 void start();
 void choose();
 void writeOut(int row, int colum, vector<vector<double>>& matrix); //Function to write out the contents of a matrix
 void fill(int row, int colum, vector<vector<double>>& matrix); //Function to fill the matrix with data
-void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to add the matrixes
-void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to subtract the matrixes
-void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2); //function to multiply the matrixes
-void powoftwo(int row, int colum, vector<vector<double>>& matrix); //function to get power of 2 of a matrix
+void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
+void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
+void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2);
+void multiplicationWithNum(int row, int colum, vector<vector<double>>& matrix);
+void powoftwo(int row, int colum, vector<vector<double>>& matrix);
 
 int main() {
+    start();
+    choose();
 
-    //isnt working now, im gonna do it later, ahhhhhhhhhhh
 }
 
 void choose(){
-cout << "What operation would you like to do? (write down the number) \n1.addition \n2.subtraction \n3.addition \n4.multiplication \n5.multiplication with number \n6.power \n";
+cout << "What operation would you like to do? (write down the number) \n1.addition \n2.subtraction \n3.multiplication \n4.multiplication with number \n5.power of two \n";
 cin >> operation;
 switch (operation)
 {
-    case 0:
-        cout << "Error, Restart! \n"; 
-        break;
-
     case 1:
-        
+        addition(row1, colum1, row2, colum2, matrix1, matrix2);
         break;
 
     case 2:
-
+        subtraction(row1, colum1, row2, colum2, matrix1, matrix2);
         break;
 
     case 3:
-
+        multiplication(row1, colum1, row2, colum2, matrix1, matrix2);
         break;
 
     case 4:
-
+        cout<< "What matrix do you want to multiply (1 or 2): \n";
+        cin>>which;
+        if(which == 0){
+            cout << "Error";
+            return;
+        }
+        else if(which == 1){
+            multiplicationWithNum(row1, colum1, matrix1);
+        }
+        else if(which == 2){
+            multiplicationWithNum(row2, colum2, matrix2);
+        }
         break;
-
     case 5:
-
+        cout<< "What matrix do you want to get the power of (1 or 2): \n";
+        cin>>which;
+        if(which == 0){
+            cout << "Error";
+            return;
+        }
+        else if(which == 1){
+            powoftwo(row1, colum1, matrix1);
+        }
+        else if(which == 2){
+            powoftwo(row2, colum2, matrix2);
+        }
         break;
-
-    case 6:
-
+    default:
+        cout << "Invalid operation \n";
+        choose();
         break;
     }
 }
@@ -93,7 +117,7 @@ void addition(int row1, int colum1, int row2, int colum2, vector<vector<double>>
     }
     else{
         cout << "\nError\n"; //error if the matrixes sizes do not match
-        return; 
+        return;
     }
 }
 
@@ -115,19 +139,19 @@ void subtraction(int row1, int colum1, int row2, int colum2, vector<vector<doubl
 }
 
 void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<double>>& matrix1, vector<vector<double>>& matrix2){
-    if(colum1 == row2){ //checking if the number of colums in the first matrix are same as the number of the rows in secend matrix
-        Amatrix.resize(row1, vector<double>(colum2)); //creating Amatrix with the oposite colums/rows from both of the matrixes
+    if(colum1 == row2){
+        Amatrix.resize(row1, vector<double>(colum2));
         for(int i = 0; i < row1; i++){
-            for(int j = 0; j < colum2; j++){ //iterate throught the created Amatrix
-                double temp = 0; //reseting the temporary variable
-                for(int k = 0; k < colum1; k++){ //iterating through the rows from matrix1 and colums from matrix2
-                    temp += matrix1[i][k] * matrix2[k][j]; //multiplying the row from matrix1, colum from matrix2 and adding them to the temporary variable
+            for(int j = 0; j < colum2; j++){
+                double temp = 0;
+                for(int k = 0; k < colum1; k++){
+                    temp += matrix1[i][k] * matrix2[k][j];
                 }
-                Amatrix[i][j] = temp; //after all elements from the row and colum from the matrixes are multiplyed and added to the temporary variable. we assign the value to the coresponding Amatrix field
+                Amatrix[i][j] = temp;
             }
         }
     }
-    if(colum2 == row1){ //the same thing but reversed and with Bmatrix
+    if(colum2 == row1){
         Bmatrix.resize(row2, vector<double>(colum1));
         for(int i = 0; i < row2; i++){
             for(int j = 0; j < colum1; j++){
@@ -140,7 +164,7 @@ void multiplication(int row1, int colum1, int row2, int colum2, vector<vector<do
         }
     }
     else{
-        cout << "\nError\n"; //error if you cant multiply at all
+        cout << "\nError\n"; //error if the matrixes sizes do not match
         return;
     }
 }
@@ -149,3 +173,13 @@ void powoftwo(int row, int colum, vector<vector<double>>& matrix){
     multiplication(row, colum, row, colum, matrix, matrix);
 }
 
+void multiplicationWithNum(int row, int colum, vector<vector<double>>& matrix){
+    double mult;
+    cout << "Enter the number you want to multiply with: \n";
+    cin >> mult;
+    for(int i = 0; i < row; i++) {
+        for(int j = 0; j < colum; j++) {
+            matrix[i][j] = matrix[i][j] * mult;
+        }
+    }
+}
