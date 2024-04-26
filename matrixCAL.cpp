@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//ahhhhhhhhhhhhhhhhhhhh
+//This is bad
 
 int row1, colum1, row2, colum2, operation = 0, which;
 
